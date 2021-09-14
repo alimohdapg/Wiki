@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Page
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Page</h1>
+    <form action="/wiki/{{ name }}/edit" method="POST">
+        {% csrf_token %}
+        <div style="margin: 10px 0px">
+            <input class="form-control" type="text" placeholder="{{ name }}" style="width: 40%;" readonly>
+        </div>
+        <div>
+            {{ markdown_form }}
+        </div>
+        <input type="submit" value="Save" class="btn btn-primary btn-lg" style="margin-top: 10px;">
+        {% if error %}
+            <div class="alert alert-danger" role="alert" style="margin-top: 10px; width: 200px; text-align: center;">
+                {{ error }}
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}

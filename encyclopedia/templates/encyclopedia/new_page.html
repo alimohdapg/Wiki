@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    <h1>New Page</h1>
+    <form action="{% url 'new_page' %}" method="POST">
+        {% csrf_token %}
+        <div style="margin: 10px 0px">
+            {{ title_and_markdown_form.page_title }}
+        </div>
+        <div>
+        {{ title_and_markdown_form.markdown_area }}
+        </div>
+        <input type="submit" value="Save" class="btn btn-primary btn-lg" style="margin-top: 10px;">
+        {% if error %}
+            <div class="alert alert-danger" role="alert" style="margin-top: 10px; width: 200px; text-align: center;">
+                {{ error }}
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}

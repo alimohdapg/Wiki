@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ name }}
+{% endblock %}
+
+{% block body %}
+    {% if name != "None" %}
+        <a class="btn btn-outline-dark" href="/wiki/{{ name }}/edit" role="button">Edit Page</a>
+    {% endif %}
+    <div>
+        {{ body | safe }}
+    </div>
+{% endblock %}
